@@ -1,5 +1,7 @@
 const express = require('express');
 const users = require('./routes/users');
+const matches = require('./routes/matches');
+const tickets = require('./routes/tickets');
 const history = require('connect-history-api-fallback');
 const path = require('path');
 
@@ -13,6 +15,8 @@ app.use(function(req, res, next) {
 });
 
 app.use('/api', users);
+app.use('/api', matches);
+app.use('/api', tickets);
 
 const staticMiddleware = express.static(path.join(__dirname, 'dist'));
 
