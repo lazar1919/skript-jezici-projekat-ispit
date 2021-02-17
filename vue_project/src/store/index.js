@@ -10,19 +10,20 @@ export default new Vuex.Store({
   mutations: {
   },
   actions: {
-    new_user: function({ commit }, user) {
-      fetch('http://localhost:8000/api/users/register', {
+    new_user : function ({commit}, user){
+      fetch('http://localhost:8000/api/register', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json'
         },
         body: user
       }).then((response) => {
-        if (!response.ok) {
-          console.log(response)
+        if (!response.ok)
           throw response;
-        }
-        return 'success'
+
+        return response.json();
+      }).then((jsonData) => {
+
       }).catch((error) => {
         if (typeof error.text === 'function')
           error.text().then((errorMessage) => {
@@ -33,7 +34,7 @@ export default new Vuex.Store({
       });
     },
     login_user: function({ commit }, user){
-      fetch('http://localhost:8762/rest-airport-user-service/login', {
+      fetch('http://localhost:8000/api/login', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json'

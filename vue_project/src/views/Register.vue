@@ -1,40 +1,13 @@
 <template>
-    <div class="register">
-        <b-container fluid>
-            <b-form>
-                <b-row class="mt-2">
-                    <b-col sm="3" offset="2">
-                        <b-input v-model="newFirstName" class="mb-2 mr-sm-2 mb-sm-0" placeholder="First Name"></b-input>
-                    </b-col>
-                </b-row>
-                <b-row class="mt-2">
-                    <b-col sm="3" offset="2">
-                        <b-input v-model="newLastName" class="mb-2 mr-sm-2 mb-sm-0" placeholder="Last Name"></b-input>
-                    </b-col>
-                </b-row>
-                <b-row class="mt-2">
-                    <b-col sm="3" offset="2">
-                        <b-input v-model="newUsername" class="mb-2 mr-sm-2 mb-sm-0" placeholder="Username"></b-input>
-                    </b-col>
-                </b-row>
-                <b-row class="mt-2">
-                    <b-col sm="3" offset="2">
-                        <b-input v-model="newPassword" class="mb-2 mr-sm-2 mb-sm-0" placeholder="Password"></b-input>
-                    </b-col>
-                </b-row>
-                <b-row class="mt-2">
-                    <b-col sm="3" offset="2">
-                        <b-input v-model="newEmail" class="mb-2 mr-sm-2 mb-sm-0" placeholder="Email"></b-input>
-                    </b-col>
-                </b-row>
-                <b-row class="mt-2">
-                    <b-col sm="3" offset="2">
-                        <b-button variant="primary" size="lg" @click="addNew">SignUp</b-button>
-                    </b-col>
-                </b-row>
-            </b-form>
-        </b-container>
-    </div>
+  <div id="register">
+    <h1>Registration</h1>
+    <input type="text" name="newFirstName" v-model="newFirstName" placeholder="First Name" />
+    <input type="text" name="newLastName" v-model="newLastName" placeholder="Last Name" />
+    <input type="text" name="newUsername" v-model="newUsername" placeholder="username" />
+    <input type="password" name="newPassword" v-model="newPassword" placeholder="Password" />
+    <input type="text" name="newEmail" v-model="newEmail" placeholder="email" />
+    <button type="button"  @click="addNew">Register</button>
+  </div>
 </template>
 
 <script>
@@ -89,7 +62,7 @@
             addNew: function() {
                 const user = JSON.stringify({firstName: this.newFirstName, lastName: this.newLastName,
                                                     username: this.newUsername, password: this.newPassword,
-                                                    email: this.email});
+                                                    email: this.newEmail});
 
                 this.new_user(user);
 
